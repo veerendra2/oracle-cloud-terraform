@@ -1,2 +1,5 @@
-# terraform-oracle-cloud-wireguard
-Infrastructure as code for wireguard vpn setup on Oracle Cloud(Always Free Tire)
+# Oracle Cloud Infrastructure (Always Free Tire)
+Terrafrom modules for OCI to set ["Always Free Tire"](https://www.oracle.com/cloud/free/) resources.
+
+List of modules
+* Compute
