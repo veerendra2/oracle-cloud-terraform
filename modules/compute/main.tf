@@ -1,3 +1,4 @@
+# https://github.com/oracle/terraform-provider-oci/blob/master/examples/always_free/main.tf
 resource "oci_core_instance" "instance" {
   availability_domain = var.instance_availability_domain
   compartment_id      = var.compartment_id

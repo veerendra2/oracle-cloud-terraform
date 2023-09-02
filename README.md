@@ -1,5 +1,4 @@
-# Oracle Cloud Infrastructure (Always Free Tire)
-Terrafrom modules for OCI to set ["Always Free Tire"](https://www.oracle.com/cloud/free/) resources.
+# Oracle Cloud Terraform
+Infrastructure as code setup on Oracle Cloud
 
-List of modules
-* Compute
+> https://www.oracle.com/cloud/free/
