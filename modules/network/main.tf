@@ -38,13 +38,15 @@ resource "oci_core_security_list" "security_list" {
   display_name   = var.security_list_display_name
 
   egress_security_rules {
+    description = "TCP protocol allow all traffic to everywhere"
     protocol    = "6"
     destination = "0.0.0.0/0"
   }
 
   ingress_security_rules {
-    protocol = "6"
-    source   = "0.0.0.0/0"
+    description = "TCP protocol allow port 22 from everywhere"
+    protocol    = "6"
+    source      = "0.0.0.0/0"
 
     tcp_options {
       max = "22"
@@ -53,32 +55,24 @@ resource "oci_core_security_list" "security_list" {
   }
 
   ingress_security_rules {
-    protocol = "6"
-    source   = "0.0.0.0/0"
+    description = "TCP protocol allow port 44 from everywhere"
+    protocol    = "6"
+    source      = "0.0.0.0/0"
 
     tcp_options {
-      max = "3000"
-      min = "3000"
+      max = "443"
+      min = "443"
     }
   }
 
   ingress_security_rules {
-    protocol = "6"
-    source   = "0.0.0.0/0"
+    description = "TCP protocol allow port 5182(wireguard) from everywhere"
+    protocol    = "6"
+    source      = "0.0.0.0/0"
 
     tcp_options {
-      max = "3005"
-      min = "3005"
-    }
-  }
-
-  ingress_security_rules {
-    protocol = "6"
-    source   = "0.0.0.0/0"
-
-    tcp_options {
-      max = "80"
-      min = "80"
+      max = "51820"
+      min = "51820"
     }
   }
 }

@@ -10,33 +10,36 @@ data "oci_core_images" "ubuntu_images" {
   sort_order               = "DESC"
 }
 
+resource "tls_private_key" "compute_ssh_key" {
+  algorithm = "RSA"
+  rsa_bits  = 2048
+}
+
 resource "oci_core_instance" "instance" {
-  availability_domain = var.instance_availability_domain
+  availability_domain = var.instance_avail_domain
   compartment_id      = var.compartment_id
   shape               = var.instance_shape
-
-  display_name = var.instance_display_name
+  display_name        = var.instance_display_name
 
   shape_config {
-    memory_in_gbs = var.instance_shape_config_memory_in_gbs
-    ocpus         = var.instance_shape_config_ocpus
+    memory_in_gbs = var.instance_memory_in_gbs
+    ocpus         = var.instance_ocpus
   }
 
   create_vnic_details {
-    assign_private_dns_record = var.instance_create_vnic_details_assign_private_dns_record
-    assign_public_ip          = var.instance_create_vnic_details_assign_public_ip
-    display_name              = var.instance_create_vnic_details_display_name
-    nsg_ids                   = var.instance_create_vnic_details_nsg_ids
-    private_ip                = var.instance_create_vnic_details_private_ip
-    skip_source_dest_check    = var.instance_create_vnic_details_skip_source_dest_check
-
-    subnet_id = oci_core_subnet.subnet.id
-    vlan_id   = oci_core_vlan.vlan.id
+    assign_private_dns_record = var.instance_vnic_assign_private_dns_record
+    assign_public_ip          = var.instance_vnic_assign_public_ip
+    display_name              = var.instance_vnic_display_name
+    subnet_id                 = var.subnet_id
   }
 
   source_details {
     source_type = "image"
     source_id   = lookup(data.oci_core_images.ubuntu_images.images[0], "id")
+  }
+
+  metadata = {
+    ssh_authorized_keys = (var.ssh_public_key != "") ? var.ssh_public_key : tls_private_key.compute_ssh_key.public_key_openssh
   }
 
   # resource "oci_core_volume" "block_volume" {

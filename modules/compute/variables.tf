@@ -3,12 +3,12 @@ variable "compartment_ocid" {
   type        = string
 }
 
-variable "instance_shape_config_memory_in_gbs" {
+variable "instance_memory_in_gbs" {
   description = "Instance RAM in GB"
   default     = 24
 }
 
-variable "instance_shape_config_ocpus" {
+variable "instance_ocpus" {
   description = "Instance Oracle CPUs"
   default     = 4
 }
@@ -16,6 +16,11 @@ variable "instance_shape_config_ocpus" {
 variable "instance_shape" {
   description = "Instance shape"
   default     = "VM.Standard.A1.Flex"
+}
+
+variable "instance_avail_domain" {
+  description = "Instance availability domain"
+  default     = "QZTD:EU-FRANKFURT-1-AD-2"
 }
 
 variable "instance_display_name" {
@@ -56,3 +61,9 @@ variable "block_volume_size_gbs" {
   type        = number
   default     = 50
 }
+
+variable "subnet_id" {
+  description = "Subnet ID"
+  type        = string
+}
+
