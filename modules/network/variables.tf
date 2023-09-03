@@ -5,7 +5,7 @@ variable "compartment_ocid" {
 
 variable "virtual_network_cidr_block" {
   description = "Virtaul network CIDR block"
-  default     = "10.1.0.0/16"
+  type        = string
 }
 
 variable "virtual_network_display_name" {
@@ -15,6 +15,7 @@ variable "virtual_network_display_name" {
 
 variable "subnet_cidr_block" {
   description = "Subnet CIDR block. It should be with in the 'virtual_network_cidr_block' network"
+  type        = string
   default     = "10.1.20.0/24"
 }
 

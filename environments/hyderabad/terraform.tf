@@ -8,11 +8,11 @@ terraform {
   required_version = ">= 1.4.0"
 
   backend "remote" {
-      hostname     = "app.terraform.io"
-      organization = "veerendra2"
+    hostname     = "app.terraform.io"
+    organization = "veerendra2"
 
-      workspaces {
-        name = "oracle-cloud-terraform-hyderabad"
-      }
+    workspaces {
+      name = "oracle-cloud-terraform-hyderabad"
     }
+  }
 }

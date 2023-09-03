@@ -1,16 +1,21 @@
+variable "compartment_ocid" {
+  description = "Compartmant OCID"
+  type        = string
+}
+
 variable "instance_shape_config_memory_in_gbs" {
   description = "Instance RAM in GB"
-  default     = 1
+  default     = 24
 }
 
 variable "instance_shape_config_ocpus" {
   description = "Instance Oracle CPUs"
-  default     = 1
+  default     = 4
 }
 
 variable "instance_shape" {
   description = "Instance shape"
-  default = "VM.Standard.A1.Flex"
+  default     = "VM.Standard.A1.Flex"
 }
 
 variable "instance_display_name" {
@@ -21,7 +26,7 @@ variable "instance_display_name" {
 variable "instance_vnic_assign_private_dns_record" {
   description = "Create private DNS record"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "instance_vnic_assign_public_ip" {
@@ -35,12 +40,19 @@ variable "instance_vnic_display_name" {
   type        = string
 }
 
-variable "instance_image_ocid" {
-  type = map(string)
+variable "block_volume_count" {
+  description = "Block volume count"
+  type        = number
+  default     = 1
+}
 
-  default = {
-    # See https://docs.us-phoenix-1.oraclecloud.com/images/
-    eu-frankfurt-1    = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaap7velf36uvsguk7e6eyg5tefp74ymj4gnc7rwka3v7flpq74p7gq"
-    ap-hyderabad-1    = "ocid1.image.oc1.ap-hyderabad-1.aaaaaaaagvevbjg6koes2ctgsjljhz5twoxs64h7hiupxyj627weurtgh2cq"
-  }
+variable "block_volume_display_name" {
+  description = "Block  volume display name"
+  type        = string
+}
+
+variable "block_volume_size_gbs" {
+  description = "Block volume size in GBs"
+  type        = number
+  default     = 50
 }
