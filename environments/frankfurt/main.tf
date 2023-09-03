@@ -13,12 +13,12 @@ module "network" {
   security_list_display_name   = "default-sl"
 }
 
-module "compute" {
-  source = "../modules/compute"
+# module "compute" {
+#   source = "../../modules/compute"
 
-  compartment_ocid = "ocid1.tenancy.oc1..aaaaaaaawm7wov3ysv42ytc5nmfbmea4mhcibnltcdyenevfkfdho5y26x2a"
+#   compartment_ocid = "ocid1.tenancy.oc1..aaaaaaaawm7wov3ysv42ytc5nmfbmea4mhcibnltcdyenevfkfdho5y26x2a"
 
-  instance_display_name      = "wireguard-fra"
-  instance_vnic_display_name = "wireguard-fra-vnci"
-  block_volume_display_name  = "wireguard-fra-blk-vol"
-}
+#   instance_display_name      = "wireguard-fra"
+#   instance_vnic_display_name = "wireguard-fra-vnci"
+#   block_volume_display_name  = "wireguard-fra-blk-vol"
+# }
