@@ -17,7 +17,7 @@ resource "tls_private_key" "compute_ssh_key" {
 
 resource "oci_core_instance" "instance" {
   availability_domain = var.instance_avail_domain
-  compartment_id      = var.compartment_id
+  compartment_id      = var.compartment_ocid
   shape               = var.instance_shape
   display_name        = var.instance_display_name
 

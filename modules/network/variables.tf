@@ -16,7 +16,6 @@ variable "virtual_network_display_name" {
 variable "subnet_cidr_block" {
   description = "Subnet CIDR block. It should be with in the 'virtual_network_cidr_block' network"
   type        = string
-  default     = "10.1.20.0/24"
 }
 
 variable "subnet_display_name" {

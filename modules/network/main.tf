@@ -37,6 +37,7 @@ resource "oci_core_security_list" "security_list" {
   vcn_id         = oci_core_virtual_network.vcn.id
   display_name   = var.security_list_display_name
 
+  # TODO: Need to add in loops
   egress_security_rules {
     description = "TCP protocol allow all traffic to everywhere"
     protocol    = "6"

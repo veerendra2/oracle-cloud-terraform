@@ -45,6 +45,11 @@ variable "instance_vnic_display_name" {
   type        = string
 }
 
+variable "subnet_id" {
+  description = "Subnet ID"
+  type        = string
+}
+
 variable "block_volume_count" {
   description = "Block volume count"
   type        = number
@@ -62,8 +67,9 @@ variable "block_volume_size_gbs" {
   default     = 50
 }
 
-variable "subnet_id" {
-  description = "Subnet ID"
+variable "ssh_public_key" {
+  description = "SSH public key"
   type        = string
+  default     = ""
 }
 
