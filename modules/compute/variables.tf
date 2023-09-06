@@ -77,17 +77,6 @@ variable "block_volume_size_gbs" {
   default     = 50
 }
 
-variable "boot_volume_backup_policy" {
-  description = "backup policies : gold/silver/bronze"
-  type        = string
-  default     = "disabled"
-
-  validation {
-    condition     = contains(["gold", "silver", "bronze", "disabled"], var.boot_volume_backup_policy)
-    error_message = "Accepted values are gold, silver, bronze or disabled (case sensitive)."
-  }
-}
-
 variable "ssh_public_key" {
   description = "SSH public key"
   type        = string

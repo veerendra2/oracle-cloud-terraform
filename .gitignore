@@ -1,3 +1,4 @@
 .oci
 *.terraform*
-*exports.sh*
+*terraform.tfstate*
+*plan*
