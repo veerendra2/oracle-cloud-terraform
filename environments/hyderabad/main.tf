@@ -17,6 +17,7 @@ module "compute" {
   source = "../../modules/compute"
 
   compartment_ocid = var.compartment_ocid
+  image_ocid       = var.image_ocid
 
   instance_avail_domain      = "QZTD:EU-FRANKFURT-1-AD-2"
   instance_display_name      = "wireguard-hyd"

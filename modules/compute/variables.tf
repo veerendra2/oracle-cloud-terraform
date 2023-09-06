@@ -18,13 +18,29 @@ variable "instance_shape" {
   default     = "VM.Standard.A1.Flex"
 }
 
-variable "instance_avail_domain" {
+variable "ad_number" {
   description = "Instance availability domain"
-  default     = "QZTD:EU-FRANKFURT-1-AD-2"
+  default     = 2
+}
+
+variable "instance_state" {
+  type        = string
+  description = "Target state for the instance.RUNNING/STOPPED."
+  default     = "RUNNING"
+
+  validation {
+    condition     = contains(["RUNNING", "STOPPED"], var.instance_state)
+    error_message = "Accepted values are RUNNING or STOPPED."
+  }
 }
 
 variable "instance_display_name" {
   description = "Instance display name"
+  type        = string
+}
+
+variable "image_ocid" {
+  description = "Source image OCID"
   type        = string
 }
 
@@ -50,12 +66,6 @@ variable "subnet_id" {
   type        = string
 }
 
-variable "block_volume_count" {
-  description = "Block volume count"
-  type        = number
-  default     = 1
-}
-
 variable "block_volume_display_name" {
   description = "Block  volume display name"
   type        = string
@@ -65,6 +75,17 @@ variable "block_volume_size_gbs" {
   description = "Block volume size in GBs"
   type        = number
   default     = 50
+}
+
+variable "boot_volume_backup_policy" {
+  description = "backup policies : gold/silver/bronze"
+  type        = string
+  default     = "disabled"
+
+  validation {
+    condition     = contains(["gold", "silver", "bronze", "disabled"], var.boot_volume_backup_policy)
+    error_message = "Accepted values are gold, silver, bronze or disabled (case sensitive)."
+  }
 }
 
 variable "ssh_public_key" {
