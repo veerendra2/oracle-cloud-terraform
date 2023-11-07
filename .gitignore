@@ -1,0 +1,7 @@
+PLAN
+plan.txt
+.terraform*
+!.terraform.lock.hcl
+terraform.tfstate*
+*.tfstate
+*.tfstate.*
