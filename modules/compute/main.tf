@@ -20,6 +20,12 @@ resource "oci_core_instance" "instance" {
     ocpus         = var.instance_ocpus
   }
 
+  agent_config {
+    are_all_plugins_disabled = true
+    is_management_disabled   = true
+    is_monitoring_disabled   = true
+  }
+
   create_vnic_details {
     assign_private_dns_record = var.instance_vnic_assign_private_dns_record
     assign_public_ip          = var.instance_vnic_assign_public_ip
@@ -38,5 +44,3 @@ resource "oci_core_instance" "instance" {
     user_data           = var.default_username
   }
 }
-
-
