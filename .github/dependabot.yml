@@ -1,0 +1,15 @@
+---
+version: 2
+updates:
+ - package-ecosystem: "terraform"
+    directory: "/"
+    rebase-strategy: "disabled"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "18:00"
+      timezone: "Europe/Berlin"
+    groups:
+      terraform-dependencies:
+        patterns:
+          - "*"
